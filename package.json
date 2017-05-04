@@ -4,8 +4,17 @@
   "private": true,
   "dependencies": {
     "aphrodite": "^1.2.1",
+    "lodash": "^4.17.4",
+    "md5": "^2.2.1",
+    "moment": "^2.18.1",
+    "phoenix": "^1.2.1",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.4",
+    "react-router": "^4.1.1",
+    "redux": "^3.6.0",
+    "redux-form": "^6.6.3",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "whatwg-fetch": "2.0.2",
