@@ -1,7 +1,9 @@
 // @flow
 import React, { Component } from 'react';
 import { BrowserRouter, Match, Miss } from 'react-router';
-import Home from '../Home';
+// changed the below line from '../Home' to './Home' in order to get app
+// to compile.
+import Home from './Home';
 import NotFound from '../../components/NotFound';
 
 class App extends Component {
