@@ -1,31 +1,92 @@
 // @flow
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { signup } from '../../actions/session';
-import SignupForm from '../../components/SignupForm';
-// import Navbar from '../../components/Navbar';
+import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
+import { Link } from 'react-router';
+import { css, StyleSheet } from 'aphrodite';
+import Input from '../Input';
+
+const styles = StyleSheet.create({
+  card: {
+    maxWidth: '500px',
+    padding: '3rem 4rem',
+    margin: '2rem auto',
+  },
+});
 
 type Props = {
-  signup: () => void,
+  onSubmit: () => void,
+  submitting: boolean,
+  handleSubmit: () => void,
 }
 
-class Signup extends Component {
-  static contextTypes = {
-    router: PropTypes.object,
-  }
-
+class SignupForm extends Component {
   props: Props
 
-  handleSignup = data => this.props.signup(data, this.context.router);
+  handleSubmit = data => this.props.onSubmit(data);
 
   render() {
+    const { handleSubmit, submitting } = this.props;
+
     return (
-      <div style={{ flex: '1' }}>
-        {/* <Navbar />} */}
-        <SignupForm onSubmit={this.handleSignup} />
-      </div>
+      <form
+        className={`card ${css(styles.card)}`}
+        onSubmit={handleSubmit(this.handleSubmit)}
+      >
+        <h3 style={{ marginBottom: '2rem', textAlign: 'center' }}>Create an account</h3>
+        <Field
+          name="username"
+          type="text"
+          component={Input}
+          placeholder="Username"
+          className="form-control"
+        />
+        <Field
+          name="email"
+          type="email"
+          component={Input}
+          placeholder="Email"
+          className="form-control"
+        />
+        <Field
+          name="password"
+          type="password"
+          component={Input}
+          placeholder="Password"
+          className="form-control"
+        />
+        <button
+          type="submit"
+          disabled={submitting}
+          className="btn btn-block btn-primary"
+        >
+          {submitting ? 'Submitting...' : 'Sign up'}
+        </button>
+        <hr style={{ margin: '2rem 0' }} />
+        <Link to="/login" className="btn btn-block btn-secondary">
+          Login to your account
+        </Link>
+      </form>
     );
   }
 }
 
-export default connect(null, { signup })(Signup);
+const validate = (values) => {
+  const errors = {};
+  if (!values.username) {
+    errors.username = 'Required';
+  }
+  if (!values.email) {
+    errors.email = 'Required';
+  }
+  if (!values.password) {
+    errors.password = 'Required';
+  } else if (values.password.length < 6) {
+    errors.password = 'Minimum of 6 characters';
+  }
+  return errors;
+};
+
+export default reduxForm({
+  form: 'signup',
+  validate,
+})(SignupForm);
