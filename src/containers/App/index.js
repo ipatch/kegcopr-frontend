@@ -49,9 +49,10 @@ class App extends Component {
 }
 
 export default connect(
-  state => ({
+  (state) => ({
     isAuthenticated: state.session.isAuthenticated,
-    willAuthenticate: state.session.willAuthenticate,
+    willAuthenticate: state.session.willAuthenticate
+
   }),
   { authenticate, unauthenticate }
 )(App);
