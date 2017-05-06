@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // Note as of react v15.5, prop-types separated into its own package.
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { logout } from '../../actions/session';
 import Navbar from '../../components/Navbar';
 

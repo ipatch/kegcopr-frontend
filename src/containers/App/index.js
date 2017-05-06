@@ -1,12 +1,10 @@
 // @flow
 import React, { Component } from 'react';
-// import { BrowserRouter, Miss } from 'react-router';
-// import { BrowserRouter } from 'react-router';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { authenticate, unauthenticate } from '../../actions/session';
 import Home from '../Home';
-// import NotFound from '../../components/NotFound';
+import NotFound from '../../components/NotFound';
 import Login from '../Login';
 import Signup from '../Signup';
 import MatchAuthenticated from '../../components/MatchAuthenticated';
@@ -38,12 +36,12 @@ class App extends Component {
 
     return (
       <BrowserRouter>
-        <div style={{ display: 'flex', flex: '1' }}>
-          <MatchAuthenticated exactly pattern="/" component={Home} {...authProps} />
-          <RedirectAuthenticated pattern="/login" component={Login} {...authProps} />
-          <RedirectAuthenticated pattern="/signup" component={Signup} {...authProps} />
-          {/*<Miss component={NotFound} />*/}
-        </div>
+        <Switch>
+          <MatchAuthenticated exact path="/" component={Home} {...authProps} />
+          <RedirectAuthenticated path="/login" component={Login} {...authProps} />
+          <RedirectAuthenticated path="/signup" component={Signup} {...authProps} />
+          <Route component={NotFound} />
+        </Switch>
       </BrowserRouter>
     );
   }
