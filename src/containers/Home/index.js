@@ -44,7 +44,7 @@ class Home extends Component {
 }
 
 export default connect(
-  state => ({
+  (state) => ({
     isAuthenticated: state.session.isAuthenticated,
     currentUser: state.session.currentUser,
   }),

@@ -1,7 +1,8 @@
 // @flow
 import React, { Component } from 'react';
 // import { BrowserRouter, Miss } from 'react-router';
-import { BrowserRouter } from 'react-router';
+// import { BrowserRouter } from 'react-router';
+import { BrowserRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { authenticate, unauthenticate } from '../../actions/session';
 import Home from '../Home';
