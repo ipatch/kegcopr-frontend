@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
+// redux-thunk - helps us handle asynchronous actions / Promises
 import thunk from 'redux-thunk';
 import reducers from '../reducers';
 
