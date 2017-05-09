@@ -23,6 +23,8 @@ class LoginForm extends Component {
   props: Props
 
   handleSubmit = (data) => this.props.onSubmit(data);
+  // handleSubmit: (data) => this.props.onSubmit(data);
+
 
   render() {
     const { handleSubmit, submitting } = this.props;
