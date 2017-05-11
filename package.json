@@ -1,6 +1,6 @@
 {
   "name": "kegcopr-frontend",
-  "homepage": "https://kegcopr.chrisrjones.com",
+  "homepage": "http://kegcopr.chrisrjones.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
