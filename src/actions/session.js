@@ -16,7 +16,7 @@ export function login(data, router) {
 }
 
 export function signup(data, router) {
-  return dispatch => api.post('/users', data)
+  return dispatch => api.post('/users', {user: data})
     .then((response) => {
       setCurrentUser(dispatch, response);
       dispatch(reset('signup'));
